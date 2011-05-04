@@ -1,0 +1,7 @@
+E:\ProjectMy\mvc3\hello\HelloWorld\HelloWorld\bin\HelloWorld.dll
+E:\ProjectMy\mvc3\hello\HelloWorld\HelloWorld\bin\HelloWorld.pdb
+E:\ProjectMy\mvc3\hello\HelloWorld\HelloWorld\bin\EntityFramework.dll
+E:\ProjectMy\mvc3\hello\HelloWorld\HelloWorld\bin\EntityFramework.xml
+E:\ProjectMy\mvc3\hello\HelloWorld\HelloWorld\obj\Debug\ResolveAssemblyReference.cache
+E:\ProjectMy\mvc3\hello\HelloWorld\HelloWorld\obj\Debug\HelloWorld.dll
+E:\ProjectMy\mvc3\hello\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb
