@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 namespace HelloWorld.Models
 {
-    //movie model test 2
+    //movie model test 
     public class Movie
     {
         public int ID { get; set; }
