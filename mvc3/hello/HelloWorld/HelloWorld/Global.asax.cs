@@ -30,6 +30,7 @@ namespace HelloWorld
 
         protected void Application_Start()
         {
+            System.Data.Entity.Database.SetInitializer<HelloWorld.Models.MovieDBContext>(new HelloWorld.Models.MovieInitializer());
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
