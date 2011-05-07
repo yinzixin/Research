@@ -16,8 +16,18 @@ namespace HelloWorld.Controllers
         //
         // GET: /Movie/
 
-        public ViewResult Index()
+        public ViewResult Index(string movieGenre)
         {
+            var genre = (from s in db.Movies
+                         orderby s.Genre
+                         select s.Genre).Distinct();
+            ViewBag.MovieGenre = new SelectList(genre);
+
+            if (!string.IsNullOrEmpty(movieGenre))
+            {
+                var movies = from s in db.Movies where s.Genre == movieGenre select s;
+                return View(movies);
+            }
             return View(db.Movies.ToList());
         }
 
@@ -99,6 +109,18 @@ namespace HelloWorld.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult SerchIndex(string movieGenre)
+        {
+           
+            var genre = (from s in db.Movies                          
+                          orderby s.Genre
+                          select s.Genre).Distinct();
+            ViewBag.MovieGenre = new SelectList(genre);
+
+            var movies = from s in db.Movies where s.Genre == movieGenre select s;
+            return View(movies);
+
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

@@ -7,6 +7,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("Index", "Movie", FormMethod.Get))
+{
+    <p>Genre: @Html.DropDownList("MovieGenre","全部")
+    &nbsp;<input type="submit" value="筛选" /></p>
+    
+}
 <table>
     <tr>
         <th>

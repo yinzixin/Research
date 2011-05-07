@@ -55,8 +55,6 @@ namespace Biz.Web
             return result;
         }
 
-
-
         public override string FormatErrorMessage(string name)
         {
             if (isFormatError)
