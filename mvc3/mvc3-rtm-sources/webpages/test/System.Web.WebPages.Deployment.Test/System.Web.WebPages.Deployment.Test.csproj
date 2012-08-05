@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\Plan9.Test.Settings.targets" />
+  <PropertyGroup>
+    <ProjectGuid>{268DEE9D-F323-4A00-8ED8-3784388C3E3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>System.Web.WebPages.Deployment.Test</RootNamespace>
+    <AssemblyName>System.Web.WebPages.Deployment.Test</AssemblyName>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PreApplicationStartCodeTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\System.Web.WebPages.Deployment\System.Web.WebPages.Deployment.csproj">
+      <Project>{22BABB60-8F02-4027-AFFC-ACF069954536}</Project>
+      <Name>System.Web.WebPages.Deployment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Web.WebPages.TestUtils\System.Web.WebPages.TestUtils.csproj">
+      <Project>{4599D053-CC06-4818-AFFD-EF45404895EF}</Project>
+      <Name>System.Web.WebPages.TestUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\Plan9.Test.targets" />
+</Project>

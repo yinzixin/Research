@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+        <id>microsoft-web-helpers</id>
+        <version>1.0</version>
+        <description>This package contains web helpers to easily add functionality to your site such as Captcha validation, Twitter profile and search boxes, Gravatars, Video, Bing search, site analytics or themes.</description>
+	    <title>ASP.NET Web Helpers Library</title>
+        <authors>Microsoft</authors>
+        <language>en-US</language>
+        <tags> ASPNETWEBPAGES </tags>
+    </metadata>
+    <files xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+        <file src="Microsoft.Web.Helpers.dll" target="lib" />    
+     </files>
+</package>

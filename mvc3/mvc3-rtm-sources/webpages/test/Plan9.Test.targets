@@ -1,0 +1,70 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="RunCIBuild">
+  <UsingTask TaskName="AnalyzeMsTestResults" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <TestResultFile ParameterType="System.String" />
+      <TestOutputFile ParameterType="System.String" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Xml" />
+      <Reference Include="System.Core" />
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Xml" />
+      <Using Namespace="System.Xml.XPath" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        if(!File.Exists(TestResultFile)) {
+          if(!File.Exists(TestOutputFile)) {
+            Log.LogError(null, null, null, null, 0, 0, 0, 0, "Test Results File was not generated.  MSTest Output:\n\nUnknown", new object[0]);
+          }
+          else {
+            Log.LogError(null, null, null, null, 0, 0, 0, 0, String.Format("Test Results File was not generated.  MSTest Output:\n\n{0}", File.ReadAllText(TestOutputFile)), new object[0]);
+          }
+          return false;
+        }
+      
+        // Open the file
+        XPathDocument doc = new XPathDocument(TestResultFile);
+        XPathNavigator nav = doc.CreateNavigator();
+        
+        // Setup namespace prefix
+        XmlNamespaceManager ns = new XmlNamespaceManager(nav.NameTable);
+        ns.AddNamespace("t", "http://microsoft.com/schemas/VisualStudio/TeamTest/2010");
+        
+        // Get all the results
+        foreach(XPathNavigator result in nav.Select("//t:UnitTestResult[@outcome='Failed']", ns)) {
+          Success = false;
+          string name = result.Select("@testName").OfType<XPathNavigator>().Single().Value;
+          string message = result.Select("./t:Output/t:ErrorInfo/t:Message", ns).OfType<XPathNavigator>().Single().Value;
+          Log.LogError(null, null, null, name, 0, 0, 0, 0, message, new object[0]);
+        }
+      ]]></Code>
+    </Task>
+  </UsingTask>
+  
+  <!-- Build and run tests from command line -->
+  <Target Name="RunTests" DependsOnTargets="CoreRunTests" />
+  
+  <!-- Build and automatically run tests after building -->
+  <Target Name="AfterBuild">
+    <CallTarget Targets="CoreRunTests" Condition=" '$(RunTestsAfterBuild)' == 'true' " />
+  </Target>
+  
+  <!-- Actual RunTests target -->
+  <Target Name="CoreRunTests">
+    <PropertyGroup>
+      <MSTestCategoryArg Condition="'$(CategoryToRun)' != ''"> /category:$(CategoryToRun)</MSTestCategoryArg>
+    </PropertyGroup>
+    <Message Text="Running Tests in $(MSBuildProjectName) ..." Importance="high" />
+    <RemoveDir Directories="$(TargetDir)\$(MSBuildProjectName)_TestTemp" Condition="Exists('$(TargetDir)\$(MSBuildProjectName)_TestTemp')" />
+    <MakeDir Directories="$(TargetDir)\$(MSBuildProjectName)_TestTemp" ContinueOnError="True" />
+    <Delete Files="$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).trx" Condition="Exists('$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).trx')" />
+    <Exec Command="&quot;$(DevEnvDir)\MsTest.exe&quot; /testcontainer:&quot;$(TargetDir)\$(AssemblyName).dll&quot; /testsettings:&quot;$(Plan9Test)\$(TestSettings).testsettings&quot; /resultsfile:&quot;$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).trx&quot;$(MSTestCategoryArg) $(MSTestArgs) > &quot;$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).mstestoutput&quot;" WorkingDirectory="$(Plan9Root)" ContinueOnError="true" />
+    <AnalyzeMsTestResults TestResultFile="$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).trx" TestOutputFile="$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).trx" />
+    <Move SourceFiles="$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).mstestoutput" DestinationFiles="$(TargetDir)\$(MSBuildProjectName).mstestoutput" Condition="Exists('$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).mstestoutput')" />
+    <Move SourceFiles="$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).trx" DestinationFiles="$(TargetDir)\$(MSBuildProjectName).trx" Condition="Exists('$(TargetDir)\$(MSBuildProjectName)_TestTemp\$(MSBuildProjectName).trx')" />
+    
+    <ItemGroup>
+		<CoverageFiles Include="$(TargetDir)\$(MSBuildProjectName)_TestTemp\**\data.coverage" />
+	</ItemGroup>
+    <Move SourceFiles="@(CoverageFiles)" DestinationFiles="$(TargetDir)\$(MSBuildProjectName).coverage" />
+  </Target>
+</Project>

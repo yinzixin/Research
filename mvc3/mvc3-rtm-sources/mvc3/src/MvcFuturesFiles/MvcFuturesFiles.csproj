@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{075BA018-DD6D-4077-96CA-D8640D888009}</ProjectGuid>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <OutputType>Library</OutputType>
+    <AssemblyName>MvcFuturesFiles</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\..\bin\Debug\MvcFutures\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\bin\Release\MvcFutures\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Target Name="Build">
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutputPath)%(Identity)')" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="Clean">
+    <RemoveDir Directories="$(OutputPath)" />
+  </Target>
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build" />
+  <ItemGroup>
+    <Content Include="DefaultTemplates\DisplayTemplates\Boolean.ascx" />
+    <Content Include="DefaultTemplates\DisplayTemplates\Collection.ascx" />
+    <Content Include="DefaultTemplates\DisplayTemplates\Decimal.ascx" />
+    <Content Include="DefaultTemplates\DisplayTemplates\EmailAddress.ascx" />
+    <Content Include="DefaultTemplates\DisplayTemplates\HiddenInput.ascx" />
+    <Content Include="DefaultTemplates\DisplayTemplates\Html.ascx" />
+    <Content Include="DefaultTemplates\DisplayTemplates\Object.ascx" />
+    <Content Include="DefaultTemplates\DisplayTemplates\String.ascx" />
+    <Content Include="DefaultTemplates\DisplayTemplates\Url.ascx" />
+    <Content Include="DefaultTemplates\EditorTemplates\Boolean.ascx" />
+    <Content Include="DefaultTemplates\EditorTemplates\Collection.ascx" />
+    <Content Include="DefaultTemplates\EditorTemplates\Decimal.ascx" />
+    <Content Include="DefaultTemplates\EditorTemplates\HiddenInput.ascx" />
+    <Content Include="DefaultTemplates\EditorTemplates\MultilineText.ascx" />
+    <Content Include="DefaultTemplates\EditorTemplates\Object.ascx" />
+    <Content Include="DefaultTemplates\EditorTemplates\Password.ascx" />
+    <Content Include="DefaultTemplates\EditorTemplates\String.ascx" />
+    <Content Include="iismap.vbs" />
+    <Content Include="MvcDiagnostics.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="registermvc.wsf" />
+    <Content Include="unregistermvc.wsf" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Set Plan9Root for test projects -->
+  <PropertyGroup>
+	<!-- Plan9Root is set based on the fact that projects importing this targets file will be one level down in the tree -->
+	<!-- Targets file within each folder should update this -->
+    <Plan9Root Condition=" '$(Plan9Root)' == '' ">$(MSBuildProjectDirectory)\..\..</Plan9Root>
+    <Plan9Signed>true</Plan9Signed>
+
+    <TestSettings Condition=" '$(TestSettings)' == '' And '$(Coverage)' == 'true' ">CodeCoverage</TestSettings>
+    <TestSettings Condition=" '$(TestSettings)' == '' ">Local</TestSettings>
+  
+    <RealProgramFiles>$(ProgramFiles)</RealProgramFiles>
+    <RealProgramFiles Condition="Exists('$(ProgramFiles) %28x86%29')">$(ProgramFiles) (x86)</RealProgramFiles>
+    <VsDir>$(RealProgramFiles)\Microsoft Visual Studio 10.0</VsDir>
+    <DevEnvDir>$(VsDir)\Common7\IDE</DevEnvDir>
+  </PropertyGroup>
+  
+  <Import Project="$(Plan9Root)\Plan9.Settings.targets" />
+</Project>

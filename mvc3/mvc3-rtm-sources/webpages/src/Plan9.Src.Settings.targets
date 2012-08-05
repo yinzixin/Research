@@ -1,0 +1,26 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Set Plan9Root for src projects -->
+  <PropertyGroup>
+    <!-- Plan9Root is set based on the fact that projects importing this targets file will be one level down in the tree -->
+    <!-- Targets file within each folder should update this -->
+    <Plan9Root Condition=" '$(Plan9Root)' == '' ">$(MSBuildProjectDirectory)\..\..</Plan9Root>
+    <Plan9Signed>false</Plan9Signed>
+    <SecurityTransparent Condition=" '$(SecurityTransparent)' == '' ">true</SecurityTransparent>
+    <ClsCompliant Condition=" '$(ClsCompliant)' == '' ">true</ClsCompliant>
+    <CodeAnalysisLogFile Condition="'$(BuildLogDir)'!=''">$(BuildLogDir)\$(MSBuildProjectName).CodeAnalysisLog.xml</CodeAnalysisLogFile>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(SecurityTransparent)' == 'true' ">
+    <DefineConstants>$(DefineConstants);SECURITY_TRANSPARENT</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ClsCompliant)' == 'true' ">
+    <DefineConstants>$(DefineConstants);CLS_COMPLIANT</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\CodeAnalysisDictionary.xml" />
+  </ItemGroup>
+
+  <Import Project="$(Plan9Root)\Plan9.Settings.targets" />
+</Project>

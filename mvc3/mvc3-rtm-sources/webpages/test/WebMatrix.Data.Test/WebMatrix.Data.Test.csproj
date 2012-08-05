@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\Plan9.Test.Settings.targets" />
+  <PropertyGroup>
+    <ProjectGuid>{E2D008A9-4D1D-4F6B-8325-4ED717D6EA0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WebMatrix.Data.Test</RootNamespace>
+    <AssemblyName>WebMatrix.Data.Test</AssemblyName>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.3.1.416.3\lib\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\WebMatrix.Data\WebMatrix.Data.csproj">
+      <Project>{4D39BAAF-8A96-473E-AB79-C8A341885137}</Project>
+      <Name>WebMatrix.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Web.WebPages.TestUtils\System.Web.WebPages.TestUtils.csproj">
+      <Project>{4599D053-CC06-4818-AFFD-EF45404895EF}</Project>
+      <Name>System.Web.WebPages.TestUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigurationManagerWrapperTest.cs" />
+    <Compile Include="DynamicRecordTest.cs" />
+    <Compile Include="FileHandlerTest.cs" />
+    <Compile Include="Mocks\MockConfigurationManager.cs" />
+    <Compile Include="DatabaseUtil.cs" />
+    <Compile Include="Mocks\MockConnectionConfiguration.cs" />
+    <Compile Include="Mocks\MockDbFileHandler.cs" />
+    <Compile Include="Mocks\MockDbProviderFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\Plan9.Test.targets" />
+</Project>

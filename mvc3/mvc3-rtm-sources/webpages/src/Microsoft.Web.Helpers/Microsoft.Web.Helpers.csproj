@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\Plan9.Src.Settings.targets" />
+  <PropertyGroup>
+    <ProjectGuid>{0C7CE809-0F72-4C19-8C64-D6573E4D9521}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.Web.Helpers</RootNamespace>
+    <AssemblyName>Microsoft.Web.Helpers</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\CommonResources.cs">
+      <Link>Common\CommonResources.cs</Link>
+    </Compile>
+    <Compile Include="..\Common\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Common\GlobalSuppressions.cs">
+      <Link>Common\GlobalSuppressions.cs</Link>
+    </Compile>
+    <Compile Include="Analytics.cs" />
+    <Compile Include="Bing.cs" />
+    <Compile Include="FileUpload.cs" />
+    <Compile Include="GamerCard.cs" />
+    <Compile Include="Gravatar.cs" />
+    <Compile Include="GravatarRating.cs" />
+    <Compile Include="LinkShare.cs" />
+    <Compile Include="PreApplicationStartCode.cs" />
+    <Compile Include="ReCaptcha.cs" />
+    <Compile Include="Resources\HelpersToolkitResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpersToolkitResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Themes.cs" />
+    <Compile Include="Twitter.cs" />
+    <Compile Include="Video.cs" />
+    <Compile Include="VirtualPathUtilityBase.cs" />
+    <Compile Include="VirtualPathUtilityWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Common\CommonResources.resx">
+      <Link>Common\CommonResources.resx</Link>
+      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HelpersToolkitResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HelpersToolkitResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\System.Web.Helpers\System.Web.Helpers.csproj">
+      <Project>{9B7E3740-6161-4548-833C-4BBCA43B970E}</Project>
+      <Name>System.Web.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Web.Razor\System.Web.Razor.csproj">
+      <Project>{8F18041B-9410-4C36-A9C5-067813DF5F31}</Project>
+      <Name>System.Web.Razor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Web.WebPages.Razor\System.Web.WebPages.Razor.csproj">
+      <Project>{0939B11A-FE4E-4BA1-8AD6-D97741EE314F}</Project>
+      <Name>System.Web.WebPages.Razor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Web.WebPages\System.Web.WebPages.csproj">
+      <Project>{76EFA9C5-8D7E-4FDF-B710-E20F8B6B00D2}</Project>
+      <Name>System.Web.WebPages</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="manifest.nuspec">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

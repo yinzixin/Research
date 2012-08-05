@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Microsoft.WebPages.Compilation.Test.Framework.VBHtmlMarkupParserTestBase" Collapsed="true">
+    <Position X="12.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Framework\VBHtmlMarkupParserTestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.WebPages.Compilation.Test.Framework.CodeParserTestBase" Collapsed="true">
+    <Position X="8.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Framework\CodeParserTestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.WebPages.Compilation.Test.Framework.CsHtmlCodeParserTestBase" Collapsed="true">
+    <Position X="5.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Framework\CsHtmlCodeParserTestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.WebPages.Compilation.Test.Framework.CsHtmlMarkupParserTestBase" Collapsed="true">
+    <Position X="10" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Framework\CsHtmlMarkupParserTestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.WebPages.Compilation.Test.Framework.MarkupParserTestBase">
+    <Position X="11" Y="7.75" Width="1.5" />
+    <Members>
+      <Method Name="SelectActiveParser" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAABAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Framework\MarkupParserTestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.WebPages.Compilation.Test.Framework.ParserTestBase">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <Members>
+      <Method Name="CreateCodeParser" Hidden="true" />
+      <Method Name="CreateMarkupParser" Hidden="true" />
+      <Method Name="CreateParserRun" Hidden="true" />
+      <Method Name="EvaluateRazorErrors" Hidden="true" />
+      <Method Name="EvaluateParseTree" Hidden="true" />
+      <Method Name="EvaluateResults" Hidden="true" />
+      <Method Name="FormatErrors" Hidden="true" />
+      <Method Name="RunParseTest" Hidden="true" />
+      <Method Name="SelectActiveParser" Hidden="true" />
+      <Property Name="TestContext" Hidden="true" />
+      <Method Name="WriteNode" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAACAABAAAAAGAAAAAAgAQAAAAAAAEAAAAAAQAEAM=</HashCode>
+      <FileName>Framework\ParserTestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.WebPages.Compilation.Test.Framework.VBHtmlCodeParserTestBase" Collapsed="true">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Framework\VBHtmlCodeParserTestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
